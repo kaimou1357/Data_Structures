@@ -17,7 +17,7 @@ public class Collision implements Comparable<Collision>{
         this.injuryAndFatalities = injuryAndFatalities;
     }
 
-    public int getZip(){
+    public int getZipCode(){
         return zipCode;
     }
     public int getInjuryAndFatalities(){

@@ -127,6 +127,19 @@ public class CollisionInfo {
             //Will be printed in working directory of program.
             try{
                 PrintWriter pw = new PrintWriter(newFile);
+                /**
+                 * Print zip code with the largest number of Collisions
+                 *
+                 */
+                pw.println("Zip codes with the highest number of collisions");
+                pw.println(colList.zipLargestNumCollisions());
+
+                /**
+                 * Print zip with the fewest number of collisions
+                 *
+                 */
+                pw.println("Zip Codes with the fewest number of Collisions");
+                pw.println(colList.zipSmallestNumCollisions());
 
                 /**
                  * Print the highest # injuries and fatalities zip codes here.
@@ -144,6 +157,7 @@ public class CollisionInfo {
 
                 pw.close();
 
+                System.out.println("Printing Successful");
 
             }catch(FileNotFoundException e){
                 System.out.println("Unable to create file " + editedFileName+".out");
