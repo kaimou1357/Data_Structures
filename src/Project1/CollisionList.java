@@ -21,25 +21,53 @@ public class CollisionList {
 
 
     /**
+     * Helper function in order to turn the CollisionList into a Zip List depending on what you would like to add first. Cyclist or Injuries.
+     *
+     * @return ArrayList with ZipCode objects.
+     */
+    private ArrayList<ZipCode> returnZipArray(String addFactor){
+
+        boolean inList = false;
+        ArrayList<ZipCode> zipList = new ArrayList<ZipCode>();
+        for(int i = 0; i<list.size(); i++){
+            //search through the zip list, if it already has the zip code, don't add it, increment the count.
+            if(addFactor.equals("Collisions")){
+                for(int j = 0; j<zipList.size(); j++){
+                    if(zipList.get(j).getZip() == list.get(i).getZipCode()){
+                        zipList.get(j).addCollision();
+                        break;
+                    }
+                    else{
+                        zipList.add(new ZipCode(list.get(i).getZipCode()));
+                    }
+
+                }
+
+            }
+
+            zipList.add(new ZipCode(list.get(i).getZipCode(), list.get(i).getInjuryAndFatalities(), list.get(i).getCyclistsInjured()));
+        }
+
+        return zipList;
+    }
+
+
+
+    /**
      * Gives the largest number of Collisions in a nice string format to output.
      * @return
      */
     public String zipLargestNumCollisions(){
         String result = "";
-        int arrayCounter = 0;
-        //array to store zip codes
-        int[] codes = new int[3];
-        //array to store occurences.
-        int[] occurences = new int[3];
-
+        ArrayList<ZipCode> zipList = returnZipArray("Collisions");
         //Sort the zip codes by largest to smallest, then traverse down the arrayList and add to codes and occurences.
-        Comparator<Collision> largestZip = new Comparator<Collision>(){
+        Comparator<ZipCode> largestZip = new Comparator<ZipCode>(){
 
-            public int compare(Collision c1, Collision c2){
-                if(c1.getZipCode()>c2.getZipCode()){
+            public int compare(ZipCode c1, ZipCode c2){
+                if(c1.getNumCollisions()>c2.getNumCollisions()){
                     return -1;
                 }
-                else if(c1.getZipCode()<c2.getZipCode()){
+                else if(c1.getNumCollisions()<c2.getNumCollisions()){
                     return 1;
                 }
                 else{
@@ -49,42 +77,19 @@ public class CollisionList {
 
         };
 
-        Collections.sort(list, largestZip);
-        int counter;
-        for(int i = 0; i<list.size(); i+=counter){
-            if(arrayCounter==3){
-                break;
-            }
-            counter= 1;
-            for(int j = i+1; j<list.size(); ++j) {
-                if (list.get(i).getZipCode() == list.get(j).getZipCode()) {
-                    counter++;
-                }
-                else{
-                    break;
-                }
-
-            }
-            //Given that the arrayList should be sorted, there is no need to traverse through the entire ArrayList.
-            occurences[arrayCounter] = counter;
-            codes[arrayCounter] = list.get(i).getZipCode();
-            arrayCounter++;
-        }
-        result += "\t" + codes[0] + "     " + occurences[0] + " collisions" + "\n";
-        result += "\t" + codes[1] + "     " + occurences[1] + " collisions"+  "\n";
-        result += "\t" + codes[2] + "     " + occurences[2] + " collisions"+  "\n";
+        Collections.sort(zipList, largestZip);
+        result+= "\t" + zipList.get(0).getZip() + "      " + zipList.get(0).getNumCollisions() + "   Collisions";
+        result+= "\t" + zipList.get(1).getZip() + "      " + zipList.get(1).getNumCollisions() + "   Collisions";
+        result+= "\t" + zipList.get(2).getZip() + "      " + zipList.get(2).getNumCollisions() + "   Collisions";
 
 
         return result;
     }
 
+
     public String zipSmallestNumCollisions(){
         return "hi";
     }
-
-
-
-
 
 
 
@@ -95,6 +100,7 @@ public class CollisionList {
     public String zipLargestNumDeath(){
         //Need to first sort from largest to smallest.
         int totalAddedCounter = 0;
+        ArrayList<ZipCode> zipList= returnZipArray("Collisions");
 
 
         String result = "";
@@ -143,6 +149,7 @@ public class CollisionList {
      */
     public String zipLargestCyclistInjury(){
         int totalAddedCounter = 0;
+        ArrayList<ZipCode> zipList = returnZipArray("Cyclists");
 
         String result = "";
         //sort from largest to smallest.

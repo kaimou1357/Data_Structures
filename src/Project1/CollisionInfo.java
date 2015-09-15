@@ -80,6 +80,8 @@ public class CollisionInfo {
         }
         if(args.length > 0){
             CollisionList colList = new CollisionList();
+            //ArrayList<ZipCode> zipList = new ArrayList<ZipCode>();
+
             File f = new File(args[0]);
             String editedFileName = args[0].substring(args[0].indexOf("/")+1, args[0].indexOf('.'));
 
@@ -111,7 +113,10 @@ public class CollisionInfo {
                         continue;
                     }
                     //Turn the string values into Integers using the Integer class.
+                    //Add to ZipList for the first couple of tasks first.
                     colList.addToList(new Collision(Integer.parseInt(fields.get(3)),Integer.parseInt(fields.get(12))+Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8))+Integer.parseInt(fields.get(9)),fields.get(19)));
+                    //zipList.add(new ZipCode(Integer.parseInt(fields.get(3)),Integer.parseInt(fields.get(12))+Integer.parseInt(fields.get(13)),Integer.parseInt(fields.get(8)) + Integer.parseInt(fields.get(9))));
+
 
                 }
 
