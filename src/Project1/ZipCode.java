@@ -32,11 +32,20 @@ public class ZipCode {
 
     public int getInjuries(){return injuriesFatalities;}
 
+    public void addInjuries(int injuryCount){
+        injuriesFatalities +=injuryCount;
+
+    }
+
+    public void addCyclistInjury(int injured){
+        cyclistsInjured+=injured;
+    }
+
     public void addCollision(){
         numCollisions++;
     }
 
-    public int getCyclistInjured(){
+    public int getCyclistsInjured(){
         return cyclistsInjured;
     }
     public int getNumCollisions(){

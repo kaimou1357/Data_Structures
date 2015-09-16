@@ -114,8 +114,8 @@ public class CollisionInfo {
                     }
                     //Turn the string values into Integers using the Integer class.
                     //Add to ZipList for the first couple of tasks first.
-                    colList.addToList(new Collision(Integer.parseInt(fields.get(3)),Integer.parseInt(fields.get(12))+Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8))+Integer.parseInt(fields.get(9)),fields.get(19)));
-                    //zipList.add(new ZipCode(Integer.parseInt(fields.get(3)),Integer.parseInt(fields.get(12))+Integer.parseInt(fields.get(13)),Integer.parseInt(fields.get(8)) + Integer.parseInt(fields.get(9))));
+                    colList.addToList(new Collision(Integer.parseInt(fields.get(3)),Integer.parseInt(fields.get(12))+Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8))+Integer.parseInt(fields.get(9)),fields.get(19)+fields.get(20)));
+
 
 
                 }
@@ -137,26 +137,29 @@ public class CollisionInfo {
                  *
                  */
                 pw.println("Zip codes with the highest number of collisions");
-                pw.println(colList.zipLargestNumCollisions());
+                pw.println(colList.zipBiggestNumCollisions());
 
                 /**
                  * Print zip with the fewest number of collisions
                  *
                  */
                 pw.println("Zip Codes with the fewest number of Collisions");
-                pw.println(colList.zipSmallestNumCollisions());
-
-                /**
-                 * Print the highest # injuries and fatalities zip codes here.
-                 */
+                pw.println(colList.zipFewestCollisions());
+//
+//                /**
+//                 * Print the highest # injuries and fatalities zip codes here.
+//                 */
                 pw.println("Zip codes with the highest number of injuries and fatalities (Combined):");
-                pw.println(colList.zipLargestNumDeath());
-                /**
-                 * Print the highest # of cyclist casualties here per zip code.
-                 */
-
+                pw.println(colList.zipNumDeath());
+//                /**
+//                 * Print the highest # of cyclist casualties here per zip code.
+//                 */
+//
                 pw.println("Zip codes with the most cyclist injuries and fatalities:");
                 pw.println(colList.zipLargestCyclistInjury());
+
+                pw.println("Percentage of Collisions involving certain vehicle types");
+                pw.println(colList.percentageOfCollisions());
 
 
 
