@@ -62,10 +62,13 @@ public class CollisionList {
         list = new ArrayList<Collision>();
     }
 
+    /**
+     * Add a collision to the Arraylist
+     * @param c
+     */
     public void addToList(Collision c){
         list.add(c);
     }
-
     /**This method computes the number of injuries and fatalalities and sorts them from ascending to descending and then return the string
      * representation of the three highest zip codes with the highest number of injuries and fatalities.
      * @return a String that denotes the zip codes with the highest number of injuries and fatalities.
@@ -119,17 +122,20 @@ public class CollisionList {
         Collections.sort(zipList,cyclistInjury);
 
         //Check for other cases.
-        result+="\t" + zipList.get(0).getZip() + "      " + zipList.get(0).getCyclistsInjured() + " Collisions"+ "\n";
+        //result+="\t" + zipList.get(0).getZip() + "      " + zipList.get(0).getCyclistsInjured() + " Collisions"+ "\n";
         int minAccidents = zipList.get(0).getCyclistsInjured();
         int countedValues = 0;
         for(int i = 1; i<zipList.size(); i++){
+            if(zipList.get(i).getCyclistsInjured() == 0 ){
+                continue;
+            }
             if(zipList.get(i).getCyclistsInjured() == minAccidents){
                 result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getCyclistsInjured() + " Collisions"+ "\n";
 
             }
 
             if(zipList.get(i).getCyclistsInjured() <zipList.get(i-1).getCyclistsInjured()){
-                countedValues++;
+
                 minAccidents = zipList.get(i).getCyclistsInjured();
                 if(countedValues == 3){
                     break;
@@ -137,6 +143,7 @@ public class CollisionList {
                 else{
                     result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getCyclistsInjured() + " Collisions"+ "\n";
                 }
+                countedValues++;
 
 
             }
@@ -195,8 +202,8 @@ public class CollisionList {
 
         Collections.sort(zipList, largestZip.reversed());
         //Check for other cases.
-        result+="\t" + zipList.get(0).getZip() + "      " + zipList.get(0).getNumCollisions() + " Collisions"+ "\n";
-        int minAccidents = zipList.get(0).getNumCollisions();
+        //result+="\t" + zipList.get(0).getZip() + "      " + zipList.get(0).getNumCollisions() + " Collisions"+ "\n";
+        int minAccidents = 1;
         int countedValues = 0;
         for(int i = 1; i<zipList.size(); i++){
             if(zipList.get(i).getNumCollisions() == 0 ){
@@ -208,14 +215,16 @@ public class CollisionList {
             }
 
             if(zipList.get(i).getNumCollisions() >zipList.get(i-1).getNumCollisions()){
-                countedValues++;
+
                 minAccidents = zipList.get(i).getNumCollisions();
+                countedValues++;
                 if(countedValues == 3){
                     break;
                 }
                 else{
                     result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getNumCollisions() + " Collisions"+ "\n";
                 }
+
 
 
             }
@@ -231,7 +240,7 @@ public class CollisionList {
     public String percentageOfCollisions(){
         int[] vehicleTypes = new int[5];
         String result = "";
-        int totalCollisions = list.size();
+        double totalCollisions = list.size();
         /**
          * 0 is taxi
          * 1 is bus
@@ -260,16 +269,17 @@ public class CollisionList {
         }
 
         DecimalFormat formatter = new DecimalFormat("#0.00%");
-        result += "\t" + "Taxi      " + formatter.format((vehicleTypes[0]/(totalCollisions)* 100.0))+ "\n";
-        result += "\t" + "Bus      " + formatter.format((vehicleTypes[1]/(totalCollisions)* 100.0))+ "\n";
-        result += "\t" + "Bicycle      " + formatter.format(vehicleTypes[2]/(totalCollisions* 100.0))+ "\n";
-        result += "\t" + "Fire Truck      " + formatter.format(vehicleTypes[3]/(totalCollisions* 100.0))+ "\n";
-        result += "\t" + "Ambulance      " + formatter.format(vehicleTypes[4]/(totalCollisions* 100.0))+ "\n";
+
+        result+= String.format("\t%-12s%2.2f%% %n","Taxi",(vehicleTypes[0]/totalCollisions)*100);
+        result+= String.format("\t%-12s%2.2f%% %n","Bus",(vehicleTypes[1]/totalCollisions)*100);
+        result+= String.format("\t%-12s%2.2f%% %n","Bicycle",(vehicleTypes[2]/totalCollisions)*100);
+        result+= String.format("\t%-12s%2.2f%% %n","Firetruck",(vehicleTypes[3]/totalCollisions)*100);
+        result+= String.format("\t%-12s%2.2f%% %n","Ambulance",(vehicleTypes[4]/totalCollisions)*100);
+
 
 
         return result;
     }
-
 
     /**
      * This is a helper method that turns the list from the Collisions arraylist into the Zipcode array list.

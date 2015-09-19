@@ -17,9 +17,11 @@ public class Collision implements Comparable<Collision>{
         this.injuryAndFatalities = injuryAndFatalities;
     }
 
-    public int getZipCode(){
-        return zipCode;
-    }
+
+    /**
+     * Returns the number of injuries and fatalities.
+     * @return
+     */
     public int getInjuryAndFatalities(){
         return injuryAndFatalities;
     }
@@ -32,28 +34,32 @@ public class Collision implements Comparable<Collision>{
     @Override
     public int compareTo(Collision c){
         return Integer.compare(injuryAndFatalities, c.getInjuryAndFatalities());
-
     }
 
-    public int getCyclistsInjured(){
-        return cyclistsHurt;
-
-    }
-
+    /**
+     * Returns the vehicle types associated with the accident.
+     * @return
+     */
     public String getVehicleType(){
         return vehicleType;
     }
 
-    public String deathsToString(){
-        String result = zipCode+"     "+ injuryAndFatalities +" injuries and fatalities \n";
-        return result;
-
+    /**
+     * Returns the zip code associated with the accident.
+     * @return
+     */
+    public int getZipCode(){
+        return zipCode;
     }
 
-    public String cyclistsToString(){
-        String result = zipCode+"     "+ cyclistsHurt +" cyclists hurt \n";
-        return result;
+    /**
+     * Returns the number of cyclists injured or fatally injured.
+     * @return
+     */
+    public int getCyclistsInjured(){
+        return cyclistsHurt;
     }
+
 
 
 }

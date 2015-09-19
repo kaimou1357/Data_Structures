@@ -26,28 +26,56 @@ public class ZipCode {
         numCollisions = 1;
     }
 
+    /**
+     * Returns the zip code.
+     * @return
+     */
     public int getZip() {
         return zip;
     }
 
+    /**
+     * Returns the amount of injuries and fatalities.
+     * @return
+     */
     public int getInjuries(){return injuriesFatalities;}
 
+    /**
+     * Adds injuries on top of injuries/fatalities.
+     * @param injuryCount
+     */
     public void addInjuries(int injuryCount){
         injuriesFatalities +=injuryCount;
 
     }
 
+    /**
+     * Adds cyclists injuries + fatalities.
+     * @param injured
+     */
     public void addCyclistInjury(int injured){
         cyclistsInjured+=injured;
     }
 
+    /**
+     * Adds a collision on top of the number of collisions.
+     */
     public void addCollision(){
         numCollisions++;
     }
 
+    /**
+     * Returns the number of cyclists injured.
+     * @return
+     */
     public int getCyclistsInjured(){
         return cyclistsInjured;
     }
+
+    /**
+     * Returns the number of Collisions associated with this zip code.
+     * @return
+     */
     public int getNumCollisions(){
         return numCollisions;
     }

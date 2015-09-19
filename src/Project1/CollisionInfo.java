@@ -80,17 +80,17 @@ public class CollisionInfo {
         }
         if(args.length > 0){
             CollisionList colList = new CollisionList();
-            //ArrayList<ZipCode> zipList = new ArrayList<ZipCode>();
-
             File f = new File(args[0]);
-            String editedFileName = args[0].substring(args[0].indexOf("/")+1, args[0].indexOf('.'));
+            String editedFileName = "";
+            if(args[0].contains(".csv")){
+                editedFileName = args[0].substring(args[0].indexOf("/")+1, args[0].lastIndexOf('.'));
+            }
+            else{
+                editedFileName = args[0].substring(args[0].indexOf("/")+1, args[0].length());
+            }
 
             File newFile = new File(editedFileName+".out");
-
-
-
             try{
-
                 Scanner scan = new Scanner(f);
                 //create the new file to write to.
 
@@ -98,8 +98,6 @@ public class CollisionInfo {
                     //skip over the header row.
                     scan.nextLine();
                 }
-
-
                 while(scan.hasNextLine()){
                     String editText = scan.nextLine();
                     ArrayList<String> fields = new ArrayList<String>();
@@ -114,16 +112,18 @@ public class CollisionInfo {
                     }
                     //Turn the string values into Integers using the Integer class.
                     //Add to ZipList for the first couple of tasks first.
-                    colList.addToList(new Collision(Integer.parseInt(fields.get(3)),Integer.parseInt(fields.get(12))+Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8))+Integer.parseInt(fields.get(9)),fields.get(19)+fields.get(20)));
+                    try{
+                        colList.addToList(new Collision(Integer.parseInt(fields.get(3)),Integer.parseInt(fields.get(12))+Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8))+Integer.parseInt(fields.get(9)),fields.get(19)+fields.get(20)));
 
-
-
+                    }catch(IllegalArgumentException e){
+                        System.out.println("Illegal arguments");
+                        continue;
+                    }
+                    colList.addToList(new Collision(Integer.parseInt(fields.get(3)), Integer.parseInt(fields.get(12)) + Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8)) + Integer.parseInt(fields.get(9)), fields.get(19) + fields.get(20)));
                 }
-
-
-
             }catch(FileNotFoundException e){
-                System.out.println(args[0] + " does not exist!");
+                System.out.println(editedFileName + " does not exist!");
+                System.exit(0);
 
             }
 
@@ -145,30 +145,30 @@ public class CollisionInfo {
                  */
                 pw.println("Zip Codes with the fewest number of Collisions");
                 pw.println(colList.zipFewestCollisions());
-//
-//                /**
-//                 * Print the highest # injuries and fatalities zip codes here.
-//                 */
+
+                /**
+                 * Print the highest # injuries and fatalities zip codes here.
+                 */
                 pw.println("Zip codes with the highest number of injuries and fatalities (Combined):");
                 pw.println(colList.zipNumDeath());
-//                /**
-//                 * Print the highest # of cyclist casualties here per zip code.
-//                 */
-//
+                /**
+                 * Print the highest # of cyclist casualties here per zip code.
+                 */
                 pw.println("Zip codes with the most cyclist injuries and fatalities:");
                 pw.println(colList.zipLargestCyclistInjury());
 
+                /**
+                 * Print the percentage of collisions.
+                 */
                 pw.println("Percentage of Collisions involving certain vehicle types");
                 pw.println(colList.percentageOfCollisions());
 
-
-
                 pw.close();
-
                 System.out.println("Printing Successful");
 
             }catch(FileNotFoundException e){
                 System.out.println("Unable to create file " + editedFileName+".out");
+                System.exit(0);
             }
 
         }
