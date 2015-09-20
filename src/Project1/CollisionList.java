@@ -249,7 +249,6 @@ public class CollisionList {
          * 4 is ambulance
          *
          */
-
         for(int i = 0; i<list.size(); i++){
             if(list.get(i).getVehicleType().contains("TAXI")){
                 vehicleTypes[0]++;
@@ -282,6 +281,33 @@ public class CollisionList {
     }
 
     /**
+     * Prints out the amount of bicycle collisions associated with where I live.
+     * @return
+     */
+    public String myBicycleCollisions(){
+        String result = "";
+        //first search for your zip codes, 10005 and 10013.
+        ArrayList<ZipCode> zipList = returnCollisionZipArray();
+        for(int i = 0; i<zipList.size(); i++){
+            if(zipList.get(i).getZip() == 10005){
+                result += "\t" + "10005" + zipList.get(i).getCyclistsInjured()+ " Cyclists injured";
+
+            }
+            if(zipList.get(i).getZip() == 10013){
+                result += "\t" + "10013" + zipList.get(i).getCyclistsInjured()+ " Cyclists injured";
+
+            }
+        }
+
+        if(result.equals("")){
+            return "No cyclists have been injured where you live!";
+        }
+
+        return result;
+
+    }
+
+    /**
      * This is a helper method that turns the list from the Collisions arraylist into the Zipcode array list.
      * @return
      */
@@ -311,7 +337,7 @@ public class CollisionList {
 
 
 
-    //Don't forget task 6, find something that interests you and report on it.
+
 
 
 }

@@ -163,6 +163,13 @@ public class CollisionInfo {
                 pw.println("Percentage of Collisions involving certain vehicle types");
                 pw.println(colList.percentageOfCollisions());
 
+                /**
+                 * Print out the number of bicycle collisions near my zip code.
+                 */
+
+                pw.println("Number of bicycle collisions of places I lived at");
+
+
                 pw.close();
                 System.out.println("Printing Successful");
 
