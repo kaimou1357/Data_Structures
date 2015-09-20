@@ -200,6 +200,8 @@ public class CollisionList {
         ArrayList<ZipCode> zipList = returnCollisionZipArray();
         //Sort the zip codes by largest to smallest, then traverse down the arrayList and add to codes and occurences.
 
+        ArrayList<ZipCode> modifiedList= new ArrayList<ZipCode>();
+
         Collections.sort(zipList, largestZip.reversed());
         //Check for other cases.
         //result+="\t" + zipList.get(0).getZip() + "      " + zipList.get(0).getNumCollisions() + " Collisions"+ "\n";
@@ -210,7 +212,8 @@ public class CollisionList {
                 continue;
             }
             if(zipList.get(i).getNumCollisions() == minAccidents){
-                result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getNumCollisions() + " Collisions"+ "\n";
+                modifiedList.add(zipList.get(i));
+                //result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getNumCollisions() + " Collisions"+ "\n";
 
             }
 
@@ -222,12 +225,15 @@ public class CollisionList {
                     break;
                 }
                 else{
-                    result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getNumCollisions() + " Collisions"+ "\n";
+                    modifiedList.add(zipList.get(i));
+                    // result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getNumCollisions() + " Collisions"+ "\n";
                 }
-
-
-
             }
+        }
+
+        for(int i = modifiedList.size()-1; i>=0; i--){
+            result+="\t" + modifiedList.get(i).getZip() + "     " + modifiedList.get(i).getNumCollisions()+ " Collisions" + "\n";
+
         }
         return result;
 
