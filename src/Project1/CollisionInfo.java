@@ -23,7 +23,7 @@ public class CollisionInfo {
      * @param textLine text read in from the CSV file.
      * @return
      */
-    public static ArrayList<String> split (String textLine ) {
+    public ArrayList<String> split (String textLine ) {
         ArrayList<String> entries = new ArrayList<String>();
         int lineLength = textLine.length();
         StringBuffer nextWord = new StringBuffer();
@@ -116,7 +116,7 @@ public class CollisionInfo {
                         colList.addToList(new Collision(Integer.parseInt(fields.get(3)),Integer.parseInt(fields.get(12))+Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8))+Integer.parseInt(fields.get(9)),fields.get(19)+fields.get(20)));
 
                     }catch(IllegalArgumentException e){
-                        System.out.println("Illegal arguments");
+                        //There are illegal arguments.
                         continue;
                     }
                     colList.addToList(new Collision(Integer.parseInt(fields.get(3)), Integer.parseInt(fields.get(12)) + Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8)) + Integer.parseInt(fields.get(9)), fields.get(19) + fields.get(20)));

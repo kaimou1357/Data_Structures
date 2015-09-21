@@ -7,27 +7,27 @@ Zip codes with the highest number of collisions
 	10065      11 Collisions
 
 Zip Codes with the fewest number of Collisions
-	10038      1 Collisions
-	10037      1 Collisions
-	10009      1 Collisions
-	10024      1 Collisions
-	10031      1 Collisions
-	10003      1 Collisions
-	10012      1 Collisions
-	10010      1 Collisions
-	10021      1 Collisions
-	10025      3 Collisions
-	10023      3 Collisions
-	10007      3 Collisions
-	10026      3 Collisions
-	10032      3 Collisions
-	10011      5 Collisions
-	10014      5 Collisions
-	10017      5 Collisions
-	10018      5 Collisions
-	10040      5 Collisions
-	10128      5 Collisions
-	10002      5 Collisions
+	10002     5 Collisions
+	10128     5 Collisions
+	10040     5 Collisions
+	10018     5 Collisions
+	10017     5 Collisions
+	10014     5 Collisions
+	10011     5 Collisions
+	10032     3 Collisions
+	10026     3 Collisions
+	10007     3 Collisions
+	10023     3 Collisions
+	10025     3 Collisions
+	10021     1 Collisions
+	10010     1 Collisions
+	10012     1 Collisions
+	10003     1 Collisions
+	10031     1 Collisions
+	10024     1 Collisions
+	10009     1 Collisions
+	10037     1 Collisions
+	10038     1 Collisions
 
 Zip codes with the highest number of injuries and fatalities (Combined):
 	10033      6 Collisions
@@ -56,3 +56,4 @@ Percentage of Collisions involving certain vehicle types
 	Firetruck   0.00% 
 	Ambulance   0.00% 
 
+Number of bicycle collisions of places I lived at
