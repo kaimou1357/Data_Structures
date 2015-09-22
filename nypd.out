@@ -1,26 +1,27 @@
 Zip codes with the highest number of collisions
-	10128      3 Collisions
-	10065      2 Collisions
-	10005      1 Collisions
+	10013      2 Collisions
+	10010      1 Collisions
+	10029      1 Collisions
 
 Zip Codes with the fewest number of Collisions
-	10128     3 Collisions
-	10065     2 Collisions
+	10013     2 Collisions
+	10029     1 Collisions
 
 Zip codes with the highest number of injuries and fatalities (Combined):
-	10065      1 Injuries and Fatalities
+	10029      8 Injuries and Fatalities
+	10013      5 Injuries and Fatalities
 
 Zip codes with the most cyclist injuries and fatalities:
-	10065      5 Cyclists Injured
-	10005      3 Cyclists Injured
+	10013      11 Cyclists Injured
+	10010      9 Cyclists Injured
 
 Percentage of Collisions involving certain vehicle types
-	Taxi        16.67% 
+	Taxi        0.00% 
 	Bus         0.00% 
 	Bicycle     0.00% 
 	Firetruck   0.00% 
 	Ambulance   0.00% 
 
 Number of bicycle collisions of places I lived at
-	10005        3 Cyclists injured
+	10013        11 Cyclists injured
 

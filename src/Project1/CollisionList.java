@@ -144,7 +144,6 @@ public class CollisionList {
         Collections.sort(zipList,cyclistInjury);
 
         //Check for other cases.
-        //result+="\t" + zipList.get(0).getZip() + "      " + zipList.get(0).getCyclistsInjured() + " Collisions"+ "\n";
         int minAccidents = zipList.get(0).getCyclistsInjured();
         int countedValues = 0;
         int minFatalities = zipList.get(0).getCyclistFatality();
@@ -158,8 +157,9 @@ public class CollisionList {
                 if(zipList.get(i).getCyclistFatality() == minFatalities){
                     result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getInjuries() + " Cyclists Injured"+ "\n";
                 }
-                else if (zipList.get(i).getCyclistFatality() > minFatalities) {
+                else if (zipList.get(i).getCyclistFatality() < minFatalities) {
                     result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getInjuries() + " Cyclists Injured"+ "\n";
+                    minFatalities = zipList.get(i).getCyclistFatality();
                     countedValues++;
                 }
 

@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cab7ec4e-b8f0-4354-8d25-bbb06e13809a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Data Structures/Project1/Collision.class" afterPath="$PROJECT_DIR$/out/production/Data Structures/Project1/Collision.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Data Structures/Project1/ZipCode.class" afterPath="$PROJECT_DIR$/out/production/Data Structures/Project1/ZipCode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Project1/CollisionInfo.java" afterPath="$PROJECT_DIR$/src/Project1/CollisionInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Data Structures/Project1/CollisionInfo.class" afterPath="$PROJECT_DIR$/out/production/Data Structures/Project1/CollisionInfo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Data Structures/Project1/CollisionList.class" afterPath="$PROJECT_DIR$/out/production/Data Structures/Project1/CollisionList.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Project1/CollisionList.java" afterPath="$PROJECT_DIR$/src/Project1/CollisionList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nypd.out" afterPath="$PROJECT_DIR$/nypd.out" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -29,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CollisionInfo.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CollisionInfo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Project1/CollisionInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.06972789">
-              <caret line="133" column="79" selection-start-line="133" selection-start-column="79" selection-end-line="133" selection-end-column="79" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="152" column="19" selection-start-line="152" selection-start-column="19" selection-end-line="152" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#split#0;class#CollisionInfo#0" expanded="false" />
@@ -75,24 +74,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CollisionList.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CollisionList.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Project1/CollisionList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="71" column="32" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.3265306">
+              <caret line="143" column="34" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="class#390:748" expanded="false" />
+                <element signature="method#compare#0;class#390:748" expanded="false" />
                 <element signature="class#801:1139" expanded="false" />
                 <element signature="method#compare#0;class#801:1139" expanded="false" />
+                <element signature="class#1193:1748" expanded="false" />
+                <element signature="method#compare#0;class#1193:1748" expanded="false" />
                 <element signature="e#1944#1945#0" expanded="true" />
                 <element signature="e#1983#1984#0" expanded="true" />
                 <element signature="docComment;method#addToList#0;class#CollisionList#0" expanded="false" />
                 <element signature="e#2096#2097#0" expanded="true" />
                 <element signature="e#2123#2124#0" expanded="true" />
                 <element signature="docComment;method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
-                <element signature="method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
                 <element signature="docComment;method#zipLargestCyclistInjury#0;class#CollisionList#0" expanded="false" />
-                <element signature="e#4667#4691#0" expanded="false" />
                 <element signature="docComment;method#zipBiggestNumCollisions#0;class#CollisionList#0" expanded="false" />
                 <element signature="docComment;method#zipFewestCollisions#0;class#CollisionList#0" expanded="false" />
                 <element signature="docComment;method#percentageOfCollisions#0;class#CollisionList#0" expanded="false" />
@@ -100,7 +101,7 @@
                 <element signature="docComment;method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
                 <element signature="method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
                 <element signature="docComment;method#returnCollisionZipArray#0;class#CollisionList#0" expanded="false" />
-                <element signature="e#12422#12431#0" expanded="true" />
+                <element signature="e#12374#12383#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -161,8 +162,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/Project1/Collision.java" />
         <option value="$PROJECT_DIR$/src/Project1/ZipCode.java" />
-        <option value="$PROJECT_DIR$/src/Project1/CollisionList.java" />
         <option value="$PROJECT_DIR$/src/Project1/CollisionInfo.java" />
+        <option value="$PROJECT_DIR$/src/Project1/CollisionList.java" />
       </list>
     </option>
   </component>
@@ -472,7 +473,13 @@
       <option name="project" value="LOCAL" />
       <updated>1442881698431</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added Checks to see if List is at least size 0.">
+      <created>1442882422534</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1442882422534</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -544,7 +551,8 @@
     <MESSAGE value="Added onto IntelliJ" />
     <MESSAGE value="Fixed Static/non-static methods" />
     <MESSAGE value="Removed double adding of Collision Objects and fixed 0 count in sorting algorithms" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed double adding of Collision Objects and fixed 0 count in sorting algorithms" />
+    <MESSAGE value="Added Checks to see if List is at least size 0." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Checks to see if List is at least size 0." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -668,17 +676,19 @@
           <caret line="307" column="30" selection-start-line="307" selection-start-column="30" selection-end-line="307" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#390:748" expanded="false" />
+            <element signature="method#compare#0;class#390:748" expanded="false" />
             <element signature="class#801:1139" expanded="false" />
             <element signature="method#compare#0;class#801:1139" expanded="false" />
+            <element signature="class#1193:1748" expanded="false" />
+            <element signature="method#compare#0;class#1193:1748" expanded="false" />
             <element signature="e#1944#1945#0" expanded="true" />
             <element signature="e#1983#1984#0" expanded="true" />
             <element signature="docComment;method#addToList#0;class#CollisionList#0" expanded="false" />
             <element signature="e#2096#2097#0" expanded="true" />
             <element signature="e#2123#2124#0" expanded="true" />
             <element signature="docComment;method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
-            <element signature="method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipLargestCyclistInjury#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#4667#4691#0" expanded="false" />
             <element signature="docComment;method#zipBiggestNumCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipFewestCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#percentageOfCollisions#0;class#CollisionList#0" expanded="false" />
@@ -686,7 +696,7 @@
             <element signature="docComment;method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#returnCollisionZipArray#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#12422#12431#0" expanded="true" />
+            <element signature="e#12374#12383#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -709,17 +719,19 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#390:748" expanded="false" />
+            <element signature="method#compare#0;class#390:748" expanded="false" />
             <element signature="class#801:1139" expanded="false" />
             <element signature="method#compare#0;class#801:1139" expanded="false" />
+            <element signature="class#1193:1748" expanded="false" />
+            <element signature="method#compare#0;class#1193:1748" expanded="false" />
             <element signature="e#1944#1945#0" expanded="true" />
             <element signature="e#1983#1984#0" expanded="true" />
             <element signature="docComment;method#addToList#0;class#CollisionList#0" expanded="false" />
             <element signature="e#2096#2097#0" expanded="true" />
             <element signature="e#2123#2124#0" expanded="true" />
             <element signature="docComment;method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
-            <element signature="method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipLargestCyclistInjury#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#4667#4691#0" expanded="false" />
             <element signature="docComment;method#zipBiggestNumCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipFewestCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#percentageOfCollisions#0;class#CollisionList#0" expanded="false" />
@@ -727,7 +739,7 @@
             <element signature="docComment;method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#returnCollisionZipArray#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#12422#12431#0" expanded="true" />
+            <element signature="e#12374#12383#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -801,17 +813,19 @@
           <caret line="263" column="51" selection-start-line="263" selection-start-column="51" selection-end-line="263" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#390:748" expanded="false" />
+            <element signature="method#compare#0;class#390:748" expanded="false" />
             <element signature="class#801:1139" expanded="false" />
             <element signature="method#compare#0;class#801:1139" expanded="false" />
+            <element signature="class#1193:1748" expanded="false" />
+            <element signature="method#compare#0;class#1193:1748" expanded="false" />
             <element signature="e#1944#1945#0" expanded="true" />
             <element signature="e#1983#1984#0" expanded="true" />
             <element signature="docComment;method#addToList#0;class#CollisionList#0" expanded="false" />
             <element signature="e#2096#2097#0" expanded="true" />
             <element signature="e#2123#2124#0" expanded="true" />
             <element signature="docComment;method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
-            <element signature="method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipLargestCyclistInjury#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#4667#4691#0" expanded="false" />
             <element signature="docComment;method#zipBiggestNumCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipFewestCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#percentageOfCollisions#0;class#CollisionList#0" expanded="false" />
@@ -819,7 +833,7 @@
             <element signature="docComment;method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#returnCollisionZipArray#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#12422#12431#0" expanded="true" />
+            <element signature="e#12374#12383#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -893,17 +907,19 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#390:748" expanded="false" />
+            <element signature="method#compare#0;class#390:748" expanded="false" />
             <element signature="class#801:1139" expanded="false" />
             <element signature="method#compare#0;class#801:1139" expanded="false" />
+            <element signature="class#1193:1748" expanded="false" />
+            <element signature="method#compare#0;class#1193:1748" expanded="false" />
             <element signature="e#1944#1945#0" expanded="true" />
             <element signature="e#1983#1984#0" expanded="true" />
             <element signature="docComment;method#addToList#0;class#CollisionList#0" expanded="false" />
             <element signature="e#2096#2097#0" expanded="true" />
             <element signature="e#2123#2124#0" expanded="true" />
             <element signature="docComment;method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
-            <element signature="method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipLargestCyclistInjury#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#4667#4691#0" expanded="false" />
             <element signature="docComment;method#zipBiggestNumCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipFewestCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#percentageOfCollisions#0;class#CollisionList#0" expanded="false" />
@@ -911,7 +927,7 @@
             <element signature="docComment;method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#returnCollisionZipArray#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#12422#12431#0" expanded="true" />
+            <element signature="e#12374#12383#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -985,17 +1001,19 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#390:748" expanded="false" />
+            <element signature="method#compare#0;class#390:748" expanded="false" />
             <element signature="class#801:1139" expanded="false" />
             <element signature="method#compare#0;class#801:1139" expanded="false" />
+            <element signature="class#1193:1748" expanded="false" />
+            <element signature="method#compare#0;class#1193:1748" expanded="false" />
             <element signature="e#1944#1945#0" expanded="true" />
             <element signature="e#1983#1984#0" expanded="true" />
             <element signature="docComment;method#addToList#0;class#CollisionList#0" expanded="false" />
             <element signature="e#2096#2097#0" expanded="true" />
             <element signature="e#2123#2124#0" expanded="true" />
             <element signature="docComment;method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
-            <element signature="method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipLargestCyclistInjury#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#4667#4691#0" expanded="false" />
             <element signature="docComment;method#zipBiggestNumCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipFewestCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#percentageOfCollisions#0;class#CollisionList#0" expanded="false" />
@@ -1003,7 +1021,7 @@
             <element signature="docComment;method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#returnCollisionZipArray#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#12422#12431#0" expanded="true" />
+            <element signature="e#12374#12383#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1077,17 +1095,19 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="class#390:748" expanded="false" />
+            <element signature="method#compare#0;class#390:748" expanded="false" />
             <element signature="class#801:1139" expanded="false" />
             <element signature="method#compare#0;class#801:1139" expanded="false" />
+            <element signature="class#1193:1748" expanded="false" />
+            <element signature="method#compare#0;class#1193:1748" expanded="false" />
             <element signature="e#1944#1945#0" expanded="true" />
             <element signature="e#1983#1984#0" expanded="true" />
             <element signature="docComment;method#addToList#0;class#CollisionList#0" expanded="false" />
             <element signature="e#2096#2097#0" expanded="true" />
             <element signature="e#2123#2124#0" expanded="true" />
             <element signature="docComment;method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
-            <element signature="method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipLargestCyclistInjury#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#4667#4691#0" expanded="false" />
             <element signature="docComment;method#zipBiggestNumCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipFewestCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#percentageOfCollisions#0;class#CollisionList#0" expanded="false" />
@@ -1095,7 +1115,7 @@
             <element signature="docComment;method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#returnCollisionZipArray#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#12422#12431#0" expanded="true" />
+            <element signature="e#12374#12383#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1198,23 +1218,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Project1/CollisionList.java">
+    <entry file="file://$PROJECT_DIR$/src/Project1/CollisionInfo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="32" selection-start-line="71" selection-start-column="32" selection-end-line="71" selection-end-column="32" />
+          <caret line="152" column="19" selection-start-line="152" selection-start-column="19" selection-end-line="152" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="docComment;method#split#0;class#CollisionInfo#0" expanded="false" />
+            <element signature="docComment;method#runProgram#0;class#CollisionInfo#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Project1/CollisionList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3265306">
+          <caret line="143" column="34" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#390:748" expanded="false" />
+            <element signature="method#compare#0;class#390:748" expanded="false" />
             <element signature="class#801:1139" expanded="false" />
             <element signature="method#compare#0;class#801:1139" expanded="false" />
+            <element signature="class#1193:1748" expanded="false" />
+            <element signature="method#compare#0;class#1193:1748" expanded="false" />
             <element signature="e#1944#1945#0" expanded="true" />
             <element signature="e#1983#1984#0" expanded="true" />
             <element signature="docComment;method#addToList#0;class#CollisionList#0" expanded="false" />
             <element signature="e#2096#2097#0" expanded="true" />
             <element signature="e#2123#2124#0" expanded="true" />
             <element signature="docComment;method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
-            <element signature="method#zipNumDeath#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipLargestCyclistInjury#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#4667#4691#0" expanded="false" />
             <element signature="docComment;method#zipBiggestNumCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#zipFewestCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#percentageOfCollisions#0;class#CollisionList#0" expanded="false" />
@@ -1222,19 +1256,7 @@
             <element signature="docComment;method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="method#myBicycleCollisions#0;class#CollisionList#0" expanded="false" />
             <element signature="docComment;method#returnCollisionZipArray#0;class#CollisionList#0" expanded="false" />
-            <element signature="e#12422#12431#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Project1/CollisionInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.06972789">
-          <caret line="133" column="79" selection-start-line="133" selection-start-column="79" selection-end-line="133" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#split#0;class#CollisionInfo#0" expanded="false" />
-            <element signature="docComment;method#runProgram#0;class#CollisionInfo#0" expanded="false" />
+            <element signature="e#12374#12383#0" expanded="true" />
           </folding>
         </state>
       </provider>
