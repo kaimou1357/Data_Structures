@@ -129,6 +129,10 @@ public class CollisionInfo {
 
 
             //try printing output to the file.
+            //Before printing, make sure the list is at least of size 1;
+            if(!colList.rightSize()){
+                System.out.println("Cannot complete function, list is size 0");
+            }
             //Will be printed in working directory of program.
             try{
                 PrintWriter pw = new PrintWriter(newFile);

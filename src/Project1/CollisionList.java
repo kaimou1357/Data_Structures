@@ -65,6 +65,14 @@ public class CollisionList {
     }
 
     /**
+     * Makes sure the arraylist is at least size 1.
+     * @return
+     */
+    public boolean rightSize(){
+        return list.size() >= 1;
+    }
+
+    /**
      * Add a collision to the Arraylist
      * @param c
      */
@@ -91,7 +99,7 @@ public class CollisionList {
         int minFatalities = zipList.get(0).getFatality();
         int countedValues = 0;
         for(int i = 1; i<zipList.size(); i++){
-            if(zipList.get(i).getCyclistsInjured() == 0 ){
+            if(zipList.get(i).getInjuries() == 0 ){
                 continue;
             }
             if(zipList.get(i).getInjuries() == minAccidents){
@@ -140,12 +148,13 @@ public class CollisionList {
         int minAccidents = zipList.get(0).getCyclistsInjured();
         int countedValues = 0;
         int minFatalities = zipList.get(0).getCyclistFatality();
+        result+="\t" + zipList.get(0).getZip() + "      " + zipList.get(0).getCyclistsInjured() + " Cyclists Injured"+ "\n";
         for(int i = 1; i<zipList.size(); i++){
             if(zipList.get(i).getCyclistsInjured() == 0 ){
                 continue;
             }
             if(zipList.get(i).getCyclistsInjured() == minAccidents){
-                //result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getCyclistsInjured() + " Cyclists Injured"+ "\n";
+
                 if(zipList.get(i).getCyclistFatality() == minFatalities){
                     result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getInjuries() + " Cyclists Injured"+ "\n";
                 }
