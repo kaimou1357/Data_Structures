@@ -113,13 +113,13 @@ public class CollisionInfo {
                     //Turn the string values into Integers using the Integer class.
                     //Add to ZipList for the first couple of tasks first.
                     try{
-                        colList.addToList(new Collision(Integer.parseInt(fields.get(3)),Integer.parseInt(fields.get(12))+Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8))+Integer.parseInt(fields.get(9)),fields.get(19)+fields.get(20)));
+                        colList.addToList(new Collision(Integer.parseInt(fields.get(3)),Integer.parseInt(fields.get(12)), Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8)), Integer.parseInt(fields.get(9)),fields.get(19)+fields.get(20)));
 
                     }catch(IllegalArgumentException e){
                         //There are illegal arguments.
                         continue;
                     }
-                    colList.addToList(new Collision(Integer.parseInt(fields.get(3)), Integer.parseInt(fields.get(12)) + Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8)) + Integer.parseInt(fields.get(9)), fields.get(19) + fields.get(20)));
+                    //colList.addToList(new Collision(Integer.parseInt(fields.get(3)), Integer.parseInt(fields.get(12)),Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8)), Integer.parseInt(fields.get(9)), fields.get(19) + fields.get(20)));
                 }
             }catch(FileNotFoundException e){
                 System.out.println(editedFileName + " does not exist!");
@@ -168,6 +168,7 @@ public class CollisionInfo {
                  */
 
                 pw.println("Number of bicycle collisions of places I lived at");
+                pw.println(colList.myBicycleCollisions());
 
 
                 pw.close();

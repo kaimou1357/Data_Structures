@@ -6,15 +6,22 @@ package Project1;
 public class Collision implements Comparable<Collision>{
     private int zipCode;
     private int cyclistsHurt;
-    private int injuryAndFatalities;
+    private int injury;
+    private int fatality;
+    private int cInjury;
+    private int cFatality;
+
     private String vehicleType;
 
 
-    public Collision(int zipcode, int cyclists, int injuryAndFatalities, String vehicle){
+    public Collision(int zipcode, int cyclistInjury, int cyclistFatality, int injury, int fatality, String vehicle){
         this.zipCode = zipcode;
-        this.cyclistsHurt = cyclists;
+        this.cyclistsHurt = cyclistInjury + cyclistFatality;
         this.vehicleType = vehicle;
-        this.injuryAndFatalities = injuryAndFatalities;
+        this.injury = injury;
+        this.fatality = fatality;
+        cInjury = cyclistInjury;
+        cFatality = cyclistFatality;
     }
 
 
@@ -23,7 +30,39 @@ public class Collision implements Comparable<Collision>{
      * @return
      */
     public int getInjuryAndFatalities(){
-        return injuryAndFatalities;
+        return injury+fatality;
+    }
+
+    /**
+     * Used to break ties.
+     * @return
+     */
+    public int getFatality(){
+        return fatality;
+    }
+
+    /**
+     * Used to break ties.
+     * @return
+     */
+    public int getInjury(){
+        return injury;
+    }
+
+    /**
+     * Used to break ties.
+     * @return
+     */
+    public int  getCyclistInjury(){
+        return cInjury;
+    }
+
+    /**
+     * Used to break ties.
+     * @return
+     */
+    public int getCyclistFatality(){
+        return cFatality;
     }
 
 
@@ -33,7 +72,7 @@ public class Collision implements Comparable<Collision>{
      */
     @Override
     public int compareTo(Collision c){
-        return Integer.compare(injuryAndFatalities, c.getInjuryAndFatalities());
+        return Integer.compare(injury+fatality, c.getInjuryAndFatalities());
     }
 
     /**

@@ -58,8 +58,10 @@ public class CollisionList {
         }
     };
 
+
     public CollisionList(){
         list = new ArrayList<Collision>();
+
     }
 
     /**
@@ -83,12 +85,24 @@ public class CollisionList {
         Collections.sort(zipList,largestDeath);
 
         //Check for other cases.
-        result+="\t" + zipList.get(0).getZip() + "      " + zipList.get(0).getInjuries() + " Collisions"+ "\n";
+
+        result+="\t" + zipList.get(0).getZip() + "      " + zipList.get(0).getInjuries() + " Injuries and Fatalities"+ "\n";
         int minAccidents = zipList.get(0).getInjuries();
+        int minFatalities = zipList.get(0).getFatality();
         int countedValues = 0;
         for(int i = 1; i<zipList.size(); i++){
+            if(zipList.get(i).getCyclistsInjured() == 0 ){
+                continue;
+            }
             if(zipList.get(i).getInjuries() == minAccidents){
-                result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getInjuries() + " Collisions"+ "\n";
+                if(zipList.get(i).getFatality() == minFatalities){
+                    result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getInjuries() + " Injuries and Fatalities"+ "\n";
+                }
+                else if (zipList.get(i).getFatality() > minFatalities) {
+                    result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getInjuries() + " Injuries and Fatalities"+ "\n";
+                    countedValues++;
+                }
+
 
             }
 
@@ -99,7 +113,7 @@ public class CollisionList {
                     break;
                 }
                 else{
-                    result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getInjuries() + " Collisions"+ "\n";
+                    result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getInjuries() + " Injuries and Fatalities"+ "\n";
                 }
 
 
@@ -125,12 +139,20 @@ public class CollisionList {
         //result+="\t" + zipList.get(0).getZip() + "      " + zipList.get(0).getCyclistsInjured() + " Collisions"+ "\n";
         int minAccidents = zipList.get(0).getCyclistsInjured();
         int countedValues = 0;
+        int minFatalities = zipList.get(0).getCyclistFatality();
         for(int i = 1; i<zipList.size(); i++){
             if(zipList.get(i).getCyclistsInjured() == 0 ){
                 continue;
             }
             if(zipList.get(i).getCyclistsInjured() == minAccidents){
-                result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getCyclistsInjured() + " Collisions"+ "\n";
+                //result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getCyclistsInjured() + " Cyclists Injured"+ "\n";
+                if(zipList.get(i).getCyclistFatality() == minFatalities){
+                    result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getInjuries() + " Cyclists Injured"+ "\n";
+                }
+                else if (zipList.get(i).getCyclistFatality() > minFatalities) {
+                    result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getInjuries() + " Cyclists Injured"+ "\n";
+                    countedValues++;
+                }
 
             }
 
@@ -141,7 +163,7 @@ public class CollisionList {
                     break;
                 }
                 else{
-                    result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getCyclistsInjured() + " Collisions"+ "\n";
+                    result+="\t" + zipList.get(i).getZip() + "      " + zipList.get(i).getCyclistsInjured() + " Cyclists Injured"+ "\n";
                 }
                 countedValues++;
 
@@ -294,20 +316,20 @@ public class CollisionList {
         String result = "";
         //first search for your zip codes, 10005 and 10013.
         ArrayList<ZipCode> zipList = returnCollisionZipArray();
+        int collisions = 0;
         for(int i = 0; i<zipList.size(); i++){
             if(zipList.get(i).getZip() == 10005){
-                result += "\t" + "10005" + zipList.get(i).getCyclistsInjured()+ " Cyclists injured";
+                result += "\t" + "10005        " + zipList.get(i).getCyclistsInjured()+ " Cyclists injured" + "\n";
+                collisions++;
 
             }
             if(zipList.get(i).getZip() == 10013){
-                result += "\t" + "10013" + zipList.get(i).getCyclistsInjured()+ " Cyclists injured";
+                result += "\t" + "10013        " + zipList.get(i).getCyclistsInjured()+ " Cyclists injured"+"\n";
+                collisions++;
 
             }
         }
 
-        if(result.equals("")){
-            return "No cyclists have been injured where you live!";
-        }
 
         return result;
 
@@ -320,19 +342,18 @@ public class CollisionList {
     private ArrayList<ZipCode> returnCollisionZipArray(){
         ArrayList<ZipCode> zipList = new ArrayList<ZipCode>();
 
-        //zipList.add(new ZipCode(list.get(0).getZipCode()));
         for(int i = 0; i<list.size(); i++){
             boolean inList = false;
             for(int j = 0; j<zipList.size(); ++j){
                 if(zipList.get(j).getZip() == list.get(i).getZipCode()){
                     zipList.get(j).addCollision();
-                    zipList.get(j).addInjuries(list.get(i).getInjuryAndFatalities());
                     zipList.get(j).addCyclistInjury(list.get(i).getCyclistsInjured());
+                    zipList.get(j).addInjuries(list.get(i).getInjuryAndFatalities());
                     inList = true;
                 }
             }
             if(!inList){
-                zipList.add(new ZipCode(list.get(i).getZipCode(), list.get(i).getInjuryAndFatalities(), list.get(i).getCyclistsInjured()));
+                zipList.add(new ZipCode(list.get(i).getZipCode(), list.get(i).getInjury(), list.get(i).getFatality(), list.get(i).getCyclistInjury(), list.get(i).getCyclistFatality()));
                 inList = true;
             }
 
@@ -340,6 +361,8 @@ public class CollisionList {
 
         return zipList;
     }
+
+
 
 
 

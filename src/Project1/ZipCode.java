@@ -13,17 +13,42 @@ public class ZipCode {
     private int numCollisions;
     private int injuriesFatalities;
     private int cyclistsInjured;
+    private int fatalities;
+    private int cInjury;
+    private int cFatality;
 
-    public ZipCode(int zip,int injuries, int cyclists ){
+    public ZipCode(int zip,int injury, int fatality,  int cyclistInjury, int cyclistFatality ){
         this.zip = zip;
-        injuriesFatalities = injuries;
-        cyclistsInjured = cyclists;
+        injuriesFatalities = injury + fatality;
+        cyclistsInjured = cyclistFatality + cyclistInjury;
+        cInjury = cyclistInjury;
+        cFatality = cyclistFatality;
+        this.fatalities = fatality;
+        numCollisions = 1;
 
+
+
+    }
+
+    public int  getCyclistInjury(){
+        return cInjury;
+    }
+
+    /**
+     * Used to break ties.
+     * @return
+     */
+    public int getCyclistFatality(){
+        return cFatality;
     }
 
     public ZipCode(int zip){
         this.zip = zip;
         numCollisions = 1;
+    }
+
+    public int getFatality(){
+        return fatalities;
     }
 
     /**
