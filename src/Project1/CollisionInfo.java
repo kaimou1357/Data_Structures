@@ -76,6 +76,7 @@ public class CollisionInfo {
     public void runProgram(String[] args){
         if(args.length == 0){
             System.out.println("Missing name of the input file");
+            System.exit(1);
 
         }
         if(args.length > 0){
@@ -102,85 +103,14 @@ public class CollisionInfo {
                     String editText = scan.nextLine();
                     ArrayList<String> fields = new ArrayList<String>();
 
-
-                    fields = split(editText);
-
-                    if(fields.size()<21){
-                        //this means there is incomplete information.
-                        //go on to the next row.
-                        continue;
                     }
                     //Turn the string values into Integers using the Integer class.
                     //Add to ZipList for the first couple of tasks first.
-                    try{
-                        colList.addToList(new Collision(Integer.parseInt(fields.get(3)),Integer.parseInt(fields.get(12)), Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8)), Integer.parseInt(fields.get(9)),fields.get(19)+fields.get(20)));
 
-                    }catch(IllegalArgumentException e){
-                        //There are illegal arguments.
-                        continue;
-                    }
-                    //colList.addToList(new Collision(Integer.parseInt(fields.get(3)), Integer.parseInt(fields.get(12)),Integer.parseInt(fields.get(13)), Integer.parseInt(fields.get(8)), Integer.parseInt(fields.get(9)), fields.get(19) + fields.get(20)));
-                }
             }catch(FileNotFoundException e){
                 System.out.println(editedFileName + " does not exist!");
-                System.exit(0);
+                System.exit(1);
 
-            }
-
-
-            //try printing output to the file.
-            //Before printing, make sure the list is at least of size 1;
-            if(!colList.rightSize()){
-                System.out.println("Cannot complete function, list is size 0");
-            }
-            //Will be printed in working directory of program.
-            try{
-                PrintWriter pw = new PrintWriter(newFile);
-                /**
-                 * Print zip code with the largest number of Collisions
-                 *
-                 */
-                pw.println("Zip codes with the highest number of collisions");
-                pw.println(colList.zipBiggestNumCollisions());
-
-                /**
-                 * Print zip with the fewest number of collisions
-                 *
-                 */
-                pw.println("Zip Codes with the fewest number of Collisions");
-                pw.println(colList.zipFewestCollisions());
-
-                /**
-                 * Print the highest # injuries and fatalities zip codes here.
-                 */
-                pw.println("Zip codes with the highest number of injuries and fatalities (Combined):");
-                pw.println(colList.zipNumDeath());
-                /**
-                 * Print the highest # of cyclist casualties here per zip code.
-                 */
-                pw.println("Zip codes with the most cyclist injuries and fatalities:");
-                pw.println(colList.zipLargestCyclistInjury());
-
-                /**
-                 * Print the percentage of collisions.
-                 */
-                pw.println("Percentage of Collisions involving certain vehicle types");
-                pw.println(colList.percentageOfCollisions());
-
-                /**
-                 * Print out the number of bicycle collisions near my zip code.
-                 */
-
-                pw.println("Number of bicycle collisions of places I lived at");
-                pw.println(colList.myBicycleCollisions());
-
-
-                pw.close();
-                System.out.println("Printing Successful");
-
-            }catch(FileNotFoundException e){
-                System.out.println("Unable to create file " + editedFileName+".out");
-                System.exit(0);
             }
 
         }

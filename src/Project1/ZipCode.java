@@ -30,6 +30,10 @@ public class ZipCode {
 
     }
 
+    /**
+     * Return injury for cyclists
+     * @return
+     */
     public int  getCyclistInjury(){
         return cInjury;
     }
@@ -47,6 +51,10 @@ public class ZipCode {
         numCollisions = 1;
     }
 
+    /**
+     * Return fatality for cyclist
+     * @return
+     */
     public int getFatality(){
         return fatalities;
     }

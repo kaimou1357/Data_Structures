@@ -168,7 +168,7 @@ public class CollisionList {
             if(zipList.get(i).getCyclistsInjured() <zipList.get(i-1).getCyclistsInjured()){
 
                 minAccidents = zipList.get(i).getCyclistsInjured();
-                if(countedValues == 3){
+                if(countedValues == 2){
                     break;
                 }
                 else{
