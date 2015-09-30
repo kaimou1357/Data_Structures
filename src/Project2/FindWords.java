@@ -23,7 +23,6 @@ public class FindWords {
      * @param args
      */
     public void runProgram(String[] args){
-
         if(args.length == 0){
             System.out.println("Missing name of the input file");
             System.exit(1);
@@ -31,15 +30,28 @@ public class FindWords {
         if(args.length > 0){
             String fileName = args[0].substring(args[0].indexOf('/') + 1);
             Dictionary dict = new Dictionary();
-            LetterBag bag = new LetterBag();
+            LetterBag bag;
+
             File f = new File(args[0]);
             try{
                 Scanner scan = new Scanner(f);
-                String userInput = getUserInput();
+                //String userInput = getUserInput();
+                String userInput = "cat";
+                bag = new LetterBag(userInput);
 
                 while(scan.hasNextLine()){
                     dict.addWord(scan.nextLine());
+                }
 
+                ArrayList<String> finished = bag.getAllWords(dict);
+                if(finished.size() == 0){
+                    System.out.println("No words found");
+                }
+                else{
+                    System.out.println("Found " + finished.size() + " words");
+                }
+                for(int i = 0; i<finished.size(); i++){
+                    System.out.println(finished.get(i));
                 }
             }catch(FileNotFoundException e) {
 
@@ -47,6 +59,9 @@ public class FindWords {
                 System.exit(1);
 
             }
+
+
+
 
         }
 

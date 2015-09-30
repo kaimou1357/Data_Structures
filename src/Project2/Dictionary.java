@@ -16,21 +16,29 @@ public class Dictionary implements DictionaryInterface {
      * Recursive binary search algorithm.
      */
     public boolean findWord(String word){
-        return findBinaryWord(listOfWords, word,0, listOfWords.size());
+        return findBinaryWord(listOfWords, word,0, listOfWords.size()-1);
 
     }
+
+    /**
+     * Helper recursive function
+     * @param list List of words
+     * @param word Word to be searched
+     * @param low Lowest index
+     * @param high Highest index
+     * @return return whether the word is in the list of not.
+     */
     private boolean findBinaryWord(ArrayList<String> list, String word, int low, int high){
         if(low>high){
             return false;
         }
         int mid = (low+high)/2;
-
         if(list.get(mid).equals(word)){
             //If the word is equal, then that's the base case.
             return true;
         }
 
-        else if (list.get(mid).compareTo(word) == -1){
+        else if (list.get(mid).compareTo(word)<0){
             return findBinaryWord(list, word, mid+1, high);
         }
         else
@@ -39,8 +47,37 @@ public class Dictionary implements DictionaryInterface {
 
 
     @Override
+    /**
+     * Finds prefix of a word.
+     */
     public boolean findPrefix(String Prefix){
-        return true;
+        return findBinaryPrefix(listOfWords, Prefix,0, listOfWords.size()-1);
+    }
+
+    /**
+     * Helper function for findPrefix.
+     * @param list arraylist
+     * @param prefix prefix you want to find
+     * @param low lowest index
+     * @param high highest index of the array.
+     * @return returns true if prefix is in the dictionary, else false.
+     */
+    private boolean findBinaryPrefix(ArrayList<String> list, String prefix, int low, int high){
+        int charCounter = prefix.length();
+        if(low>high){
+            return false;
+        }
+        int mid = (low+high)/2;
+        if(list.get(mid).substring(0, charCounter).equals(prefix)){
+            //If the word is equal, then that's the base case.
+            return true;
+        }
+
+        else if (list.get(mid).substring(0, charCounter).compareTo(prefix) < 0){
+            return findBinaryPrefix(list, prefix, mid+1, high);
+        }
+        else
+            return findBinaryPrefix(list, prefix, low, mid-1);
     }
 
     /**
@@ -50,7 +87,11 @@ public class Dictionary implements DictionaryInterface {
     public void addWord(String s){
         listOfWords.add(s);
     }
+
 }
+
+
+
 
 /**
  * Interface I have to implement for this project that helps sort through queries using recursive binary search.

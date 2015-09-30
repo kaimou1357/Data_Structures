@@ -12,13 +12,20 @@ public class DictionaryTest {
     @Test
     public void testFindWord() {
         Dictionary dict = new Dictionary();
-        dict.addWord("cats");
+        dict.addWord("computer");
         dict.addWord("crystal");
         dict.addWord("kai");
+        dict.addWord("leeroy");
+        dict.addWord("zebra");
+        assertTrue(dict.findWord("computer"));
+    }
 
-
-        assertTrue(dict.findWord("kai"));
-
-
+    @Test
+    public void testFindPrefix(){
+        Dictionary dict = new Dictionary();
+        dict.addWord("computer");
+        dict.addWord("kai");
+        dict.addWord("zebra");
+        assertTrue(dict.findPrefix("ze"));
     }
 }
