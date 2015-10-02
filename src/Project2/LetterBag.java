@@ -52,15 +52,33 @@ public class LetterBag implements LetterBagInterface {
 
             }
         }
+        //Sort the list before returning it to the user. 
+        sortTheList(resultList);
 
         return resultList;
     }
 
     /**
-     * Method to sort the arraylist before returning it to the user.
+     * Method to sort the arraylist before returning it to the user. Let's try using insertion sort.
      * @param list
      */
     private void sortTheList(ArrayList<String> list){
+        for(int i = 0; i<list.size(); i++){
+            int minOfIteration = i;
+            for(int j = i+1; j<list.size(); j++){
+                if(list.get(j).compareTo(list.get(i))<0){
+                    minOfIteration = j;
+                }
+
+            }
+            if(minOfIteration != i){
+                String temp = list.get(i);
+                //swap the two elements.
+                list.set(i, list.get(minOfIteration));
+                list.set(minOfIteration, temp);
+
+            }
+        }
 
     }
 
