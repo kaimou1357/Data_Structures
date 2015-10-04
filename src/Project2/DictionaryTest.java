@@ -23,9 +23,9 @@ public class DictionaryTest {
     @Test
     public void testFindPrefix(){
         Dictionary dict = new Dictionary();
-        dict.addWord("computer");
+        dict.addWord("catta");
         dict.addWord("kai");
         dict.addWord("zebra");
-        assertTrue(dict.findPrefix("ze"));
+        assertTrue(dict.findPrefix("catt"));
     }
 }

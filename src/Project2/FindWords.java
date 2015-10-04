@@ -35,21 +35,27 @@ public class FindWords {
             File f = new File(args[0]);
             try{
                 Scanner scan = new Scanner(f);
-                //String userInput = getUserInput();
-                String userInput = "cat";
+                String userInput = getUserInput();
+                //debugging line
+                //String userInput = "zamrara";
                 bag = new LetterBag(userInput);
 
                 while(scan.hasNextLine()){
                     dict.addWord(scan.nextLine());
                 }
-
+                if(dict.isEmpty()){
+                    System.err.println("The file has no values");
+                    System.exit(1);
+                }
                 ArrayList<String> finished = bag.getAllWords(dict);
+                //sortTheList(finished);
                 if(finished.size() == 0){
                     System.out.println("No words found");
                 }
                 else{
                     System.out.println("Found " + finished.size() + " words");
                 }
+
                 for(int i = 0; i<finished.size(); i++){
                     System.out.println(finished.get(i));
                 }
@@ -64,10 +70,31 @@ public class FindWords {
 
 
         }
-
-
     }
 
+    /**
+     * This sorting method doesn't work yet
+     * @param list
+     */
+    private void sortTheList(ArrayList<String> list){
+        for(int i = 0; i<list.size(); i++){
+            int minOfIteration = i;
+            for(int j = i+1; j<list.size(); j++){
+                if(list.get(j).compareTo(list.get(i))<0){
+                    minOfIteration = j;
+                }
+
+            }
+            if(minOfIteration != i){
+                String temp = list.get(i);
+                //swap the two elements.
+                list.set(i, list.get(minOfIteration));
+                list.set(minOfIteration, temp);
+
+            }
+        }
+
+    }
     /**
      * Helper method to process String input given by the user.
      * @return

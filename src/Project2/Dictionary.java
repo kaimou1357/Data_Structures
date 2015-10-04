@@ -51,7 +51,7 @@ public class Dictionary implements DictionaryInterface {
      * Finds prefix of a word.
      */
     public boolean findPrefix(String Prefix){
-        return findBinaryPrefix(listOfWords, Prefix,0, listOfWords.size()-1);
+        return findBinaryPrefix(listOfWords, Prefix,0, listOfWords.size()-1, 0);
     }
 
     /**
@@ -62,22 +62,29 @@ public class Dictionary implements DictionaryInterface {
      * @param high highest index of the array.
      * @return returns true if prefix is in the dictionary, else false.
      */
-    private boolean findBinaryPrefix(ArrayList<String> list, String prefix, int low, int high){
-        int charCounter = prefix.length();
+    private boolean findBinaryPrefix(ArrayList<String> list, String prefix, int low, int high, int prefixLength){
+        int charCounter = prefixLength;
+        if(prefix.length() ==1) {
+            //We don't want an array out of bounds.
+            charCounter=1;
+        }
+        else if(prefix.length() == 2){
+            charCounter =2;
+        }
         if(low>high){
             return false;
         }
         int mid = (low+high)/2;
-        if(list.get(mid).substring(0, charCounter).equals(prefix)){
+        if(list.get(mid).substring(0, charCounter).equals(prefix.substring(0, charCounter))){
             //If the word is equal, then that's the base case.
             return true;
         }
 
-        else if (list.get(mid).substring(0, charCounter).compareTo(prefix) < 0){
-            return findBinaryPrefix(list, prefix, mid+1, high);
+        else if (list.get(mid).substring(0, charCounter).compareTo(prefix.substring(0, charCounter)) < 0){
+            return findBinaryPrefix(list, prefix, mid+1, high, charCounter);
         }
         else
-            return findBinaryPrefix(list, prefix, low, mid-1);
+            return findBinaryPrefix(list, prefix, low, mid-1, charCounter);
     }
 
     /**
@@ -86,6 +93,10 @@ public class Dictionary implements DictionaryInterface {
      */
     public void addWord(String s){
         listOfWords.add(s);
+    }
+
+    public boolean isEmpty(){
+        return listOfWords.size() == 0;
     }
 
 }
