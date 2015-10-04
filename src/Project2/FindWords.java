@@ -73,7 +73,7 @@ public class FindWords {
     }
 
     /**
-     * This sorting method doesn't work yet
+     * Sorting method that sorts the arrayList before its returned.
      * @param list
      */
     private void sortTheList(ArrayList<String> list){

@@ -65,10 +65,11 @@ public class Dictionary implements DictionaryInterface {
     private boolean findBinaryPrefix(ArrayList<String> list, String prefix, int low, int high, int prefixLength){
         int charCounter = prefixLength;
         if(prefix.length() ==1) {
-            //We don't want an array out of bounds.
+
             charCounter=1;
         }
-        else if(prefix.length() == 2){
+        else if(prefix.length() >= 2){
+            //We don't want an array out of bounds. So we aren't going to check if prefix is greater than length of 2.
             charCounter =2;
         }
         if(low>high){

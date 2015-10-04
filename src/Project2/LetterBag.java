@@ -70,10 +70,7 @@ public class LetterBag implements LetterBagInterface {
             }
 
         }
-
     }
-
-
 }
 
 interface LetterBagInterface{
