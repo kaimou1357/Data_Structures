@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Kai on 9/24/2015.
+ * A dictionary class to hold all the words scanned in from the text file.
  */
 public class Dictionary implements DictionaryInterface {
     private ArrayList<String> listOfWords;
@@ -51,7 +52,7 @@ public class Dictionary implements DictionaryInterface {
      * Finds prefix of a word.
      */
     public boolean findPrefix(String Prefix){
-        return findBinaryPrefix(listOfWords, Prefix,0, listOfWords.size()-1, 0);
+        return findBinaryPrefix(listOfWords, Prefix,0, listOfWords.size()-1);
     }
 
     /**
@@ -62,30 +63,22 @@ public class Dictionary implements DictionaryInterface {
      * @param high highest index of the array.
      * @return returns true if prefix is in the dictionary, else false.
      */
-    private boolean findBinaryPrefix(ArrayList<String> list, String prefix, int low, int high, int prefixLength){
-        int charCounter = prefixLength;
-        if(prefix.length() ==1) {
+    private boolean findBinaryPrefix(ArrayList<String> list, String prefix, int low, int high){
+        //int charCounter = prefixLength;
 
-            charCounter=1;
-        }
-        else if(prefix.length() >= 2){
-            //We don't want an array out of bounds. So we aren't going to check if prefix is greater than length of 2.
-            charCounter =2;
-        }
         if(low>high){
             return false;
         }
         int mid = (low+high)/2;
-        if(list.get(mid).substring(0, charCounter).equals(prefix.substring(0, charCounter))){
-            //If the word is equal, then that's the base case.
+        if(list.get(mid).startsWith(prefix)){
             return true;
         }
 
-        else if (list.get(mid).substring(0, charCounter).compareTo(prefix.substring(0, charCounter)) < 0){
-            return findBinaryPrefix(list, prefix, mid+1, high, charCounter);
+        else if (list.get(mid).compareTo(prefix) < 0){
+            return findBinaryPrefix(list, prefix, mid+1, high);
         }
         else
-            return findBinaryPrefix(list, prefix, low, mid-1, charCounter);
+            return findBinaryPrefix(list, prefix, low, mid-1);
     }
 
     /**
@@ -96,6 +89,10 @@ public class Dictionary implements DictionaryInterface {
         listOfWords.add(s);
     }
 
+    /**
+     * Checks whether the dictionary is empty or not.
+     * @return true or false
+     */
     public boolean isEmpty(){
         return listOfWords.size() == 0;
     }

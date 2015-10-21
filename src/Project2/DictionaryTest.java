@@ -6,6 +6,7 @@ import static org.junit.Assert.*;
 
 /**
  * Created by Kai on 9/25/2015.
+ * Class used to test whether dictionary findword/findprefix works or not.
  */
 public class DictionaryTest {
 
@@ -23,9 +24,12 @@ public class DictionaryTest {
     @Test
     public void testFindPrefix(){
         Dictionary dict = new Dictionary();
-        dict.addWord("catta");
+        dict.addWord("cats");
+        dict.addWord("dog");
+        dict.addWord("dolphin");
+        dict.addWord("leeroy");
         dict.addWord("kai");
         dict.addWord("zebra");
-        assertTrue(dict.findPrefix("catt"));
+        assertTrue(dict.findPrefix("dolphin"));
     }
 }

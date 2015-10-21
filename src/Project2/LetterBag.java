@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Kai on 9/24/2015.
+ * LetterBag class implements the interface to generate a list to return back to the main FindWords function. Uses recursion to generate permutations.
  */
 public class LetterBag implements LetterBagInterface {
     private String userInput;
@@ -17,7 +18,7 @@ public class LetterBag implements LetterBagInterface {
     /**
      * Returns an arrayList of anagrams.
      * @param dict Dictionary object read in from the file.
-     * @return returns ArrayLIst of Anagrams.
+     * @return returns ArrayList of Anagrams.
      */
     public ArrayList<String> getAllWords(Dictionary dict){
         ArrayList<String> emptyList = new ArrayList<String>();
@@ -46,6 +47,8 @@ public class LetterBag implements LetterBagInterface {
         }
         else{
             for(int i = 0;i<seq.length(); i++){
+                //1. Treat each letter as the first letter.
+                //2. Use recursion to generate all possible permutations using the selected letter (i) as a first letter.
                 if(!dict.findPrefix(prefix)){break;}
                 //if prefix is not even in dictionary, don't bother generating.
 
