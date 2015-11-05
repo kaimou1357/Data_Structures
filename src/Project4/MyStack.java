@@ -21,10 +21,10 @@ public class MyStack<E> {
     public boolean isEmpty(){
         return head == null;
     }
+
     /**}
      * Peeks the next data item on top of the stack (In the front of the linked list).
      */
-
     public E peek(){
         if(head == null){
             return null;

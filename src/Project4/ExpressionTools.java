@@ -19,7 +19,7 @@ public class ExpressionTools {
      * @throws PostFixException
      */
     public static int postFixEvaluate(String expression) throws PostFixException {
-        Stack<Integer> stack = new Stack<Integer>();
+        MyStack<Integer> stack = new MyStack<>();
 
         int value;
         String operator;

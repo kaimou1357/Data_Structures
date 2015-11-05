@@ -16,6 +16,7 @@ import java.util.Scanner;
  */
 public class Calculator {
     public static void main(String[] args){
+
         if(args.length == 0){
             System.out.println("Missing name of the input file");
             System.exit(1);
