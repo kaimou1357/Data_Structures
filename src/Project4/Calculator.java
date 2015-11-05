@@ -31,7 +31,16 @@ public class Calculator {
 
             try{
                 Scanner scan = new Scanner(input);
+                File outFile = new File(args[1]);
+                PrintWriter pw = new PrintWriter(outFile);
                 while(scan.hasNextLine()){
+                    try{
+                        ExpressionTools.postFixEvaluate(scan.nextLine());
+                        pw.println("hello");
+                    }catch(PostFixException e){
+                        if(e.getMessage().equals("Divide by Zero error"));
+                        pw.println("UNDEF");
+                    }
 
                 }
 
@@ -42,15 +51,7 @@ public class Calculator {
 
             }
 
-            File outFile = new File(args[1]);
-            try{
-                //Write the results to the file here.
-                PrintWriter pw = new PrintWriter(outFile);
 
-            }catch(FileNotFoundException j){
-                System.err.println(args[1] + "could not be created");
-                System.exit(1);
-            }
 
 
 

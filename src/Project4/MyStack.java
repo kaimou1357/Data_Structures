@@ -3,7 +3,7 @@ package Project4;
 /**
  * Created by Kai on 11/1/2015.
  * Linked List based implementation of a Stack.
- * @author Kai
+ * @author Kai Mou
  * @Date 11/2/2015
  */
 public class MyStack<E> {
@@ -31,6 +31,11 @@ public class MyStack<E> {
         }
         return head.getData();
     }
+
+    /**
+     * Returns the first item in LinkedList and removes the item.
+     * @return
+     */
     public E pop(){
         if(head == null){
             return null;
@@ -47,7 +52,7 @@ public class MyStack<E> {
      * @return
      */
     public int search(Object o){
-        //TODO To be implemented later. 
+        //TODO To be implemented later.
         if(head == null){
             return -1;
         }

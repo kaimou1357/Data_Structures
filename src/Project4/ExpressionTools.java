@@ -18,7 +18,7 @@ public class ExpressionTools {
      * @return
      * @throws PostFixException
      */
-    public static int postFixEvaluate(String expression) throws PostFixException {
+    public static int postFixEvaluate(String expression) throws PostFixException, ArithmeticException {
         MyStack<Integer> stack = new MyStack<>();
 
         int value;
@@ -60,8 +60,12 @@ public class ExpressionTools {
                 stack.pop();
 
                 // Perform operation.
-                if (operator.equals("/"))
+                if (operator.equals("/")) {
+                    if (operand2 == 0){
+                        throw new ArithmeticException("Divide by Zero");
+                    }
                     result = operand1 / operand2;
+                }
                 else if (operator.equals("*"))
                     result = operand1 * operand2;
                 else if (operator.equals("+"))
@@ -92,6 +96,20 @@ public class ExpressionTools {
 
         // Return the final.
         return result;
+    }
+
+    public static String infixToPostFix(String message){
+        MyStack<Character> operatorStack = new MyStack<Character>();
+        String postFixResult = "";
+        Scanner tokenizer = new Scanner(message);
+
+        while(tokenizer.hasNext()){
+
+        }
+
+        return null;
+
+
     }
 
 }
