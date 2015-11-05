@@ -26,17 +26,23 @@ public class MyStack<E> {
      */
 
     public E peek(){
+        if(head == null){
+            return null;
+        }
         return head.getData();
     }
     public E pop(){
+        if(head == null){
+            return null;
+        }
         E item = head.getData();
-        head = head.getnextNode();
+        head = head.getNextNode();
         return item;
 
     }
 
     /**
-     * Checks whether the object is in the LinkedList or not.
+     * Checks whether the object is in the LinkedList or not. Return -1 if error or not found.
      * @param o Object o.
      * @return
      */
@@ -45,12 +51,16 @@ public class MyStack<E> {
         if(head == null){
             return -1;
         }
-
+        int counter = 0;
         Node<E> current = head;
-        while(current.getnextNode()!=null){
+        while(current.getNextNode()!=null){
+            if(current.equals(o)){
+                return counter;
+            }
+            counter++;
 
         }
-        return 0;
+        return -1;
     }
 
     /**
@@ -63,7 +73,7 @@ public class MyStack<E> {
             head = n;
         }
         else{
-            n.setnextNode(head);
+            n.setNextNode(head);
             head = n;
         }
     }

@@ -11,10 +11,10 @@ public class Node<E> {
     public Node(E data){
         this.data = data;
     }
-    public Node<E> getnextNode(){
+    public Node<E> getNextNode(){
         return nextNode;
     }
-    public void setnextNode(Node<E> nextNode){
+    public void setNextNode(Node<E> nextNode){
         this.nextNode = nextNode;
     }
 
