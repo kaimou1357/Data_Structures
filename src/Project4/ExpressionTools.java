@@ -98,16 +98,59 @@ public class ExpressionTools {
         return result;
     }
 
+    /**
+     * This method converts infix expressions to Postfix operations.
+     * @param message String to be evaluated
+     * @return Returns a postfix expression.
+     */
+
     public static String infixToPostFix(String message){
         MyStack<Character> operatorStack = new MyStack<Character>();
         String postFixResult = "";
         Scanner tokenizer = new Scanner(message);
 
         while(tokenizer.hasNext()){
+            if(tokenizer.hasNextInt()){
+                postFixResult+=tokenizer.nextInt();
+            }
+            else{
+                String value = tokenizer.next();
+                String operators  = "*/-+";
+
+                if(value.equals("(")){
+                    operatorStack.push('(');
+                }
+                else if(operators.contains(value)){
+                    if(!operatorStack.isEmpty()){
+                        //While top element on the stack has precedence higher or equal
+                        postFixResult+=operatorStack.pop();
+
+                    }
+                    operatorStack.push(value.charAt(0));
+                }
+                else if(value.equals(")")){
+                    while(!operatorStack.isEmpty()){
+                        if(!operatorStack.equals("(")){
+                            postFixResult+=operatorStack.pop();
+                        }
+                        else{
+                            operatorStack.pop();
+                            break;
+                        }
+
+                    }
+                }
+
+
+            }
+
+            while(!operatorStack.isEmpty()){
+                postFixResult+=operatorStack.pop();
+            }
 
         }
 
-        return null;
+        return postFixResult;
 
 
     }

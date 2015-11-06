@@ -17,44 +17,46 @@ import java.util.Scanner;
 public class Calculator {
     public static void main(String[] args){
 
-        if(args.length == 0){
-            System.out.println("Missing name of the input file");
-            System.exit(1);
-        }
-        if(args.length == 1){
-            System.err.println("Missing name of the output file");
-            System.exit(1);
-        }
-        if(args.length > 1){
-            String fileName = args[0].substring(args[0].indexOf('/') + 1);
-            File input = new File(args[0]);
+        System.out.println(ExpressionTools.infixToPostFix("1 + 3"));
 
-            try{
-                Scanner scan = new Scanner(input);
-                File outFile = new File(args[1]);
-                PrintWriter pw = new PrintWriter(outFile);
-                while(scan.hasNextLine()){
-                    try{
-                        ExpressionTools.postFixEvaluate(scan.nextLine());
-                        pw.println("hello");
-                    }catch(PostFixException e){
-                        if(e.getMessage().equals("Divide by Zero error"));
-                        pw.println("UNDEF");
-                    }
-
-                }
-
-            }catch(FileNotFoundException e) {
-
-                System.out.println(fileName + " does not exist!");
-                System.exit(1);
-
-            }
-
-
-
-
-
-        }
+//        if(args.length == 0){
+//            System.out.println("Missing name of the input file");
+//            System.exit(1);
+//        }
+//        if(args.length == 1){
+//            System.err.println("Missing name of the output file");
+//            System.exit(1);
+//        }
+//        if(args.length > 1){
+//            String fileName = args[0].substring(args[0].indexOf('/') + 1);
+//            File input = new File(args[0]);
+//
+//            try{
+//                Scanner scan = new Scanner(input);
+//                File outFile = new File(args[1]);
+//                PrintWriter pw = new PrintWriter(outFile);
+//                while(scan.hasNextLine()){
+//                    try{
+//                        ExpressionTools.postFixEvaluate(scan.nextLine());
+//                        pw.println("hello");
+//                    }catch(PostFixException e){
+//                        if(e.getMessage().equals("Divide by Zero error"));
+//                        pw.println("UNDEF");
+//                    }
+//
+//                }
+//
+//            }catch(FileNotFoundException e) {
+//
+//                System.out.println(fileName + " does not exist!");
+//                System.exit(1);
+//
+//            }
+//
+//
+//
+//
+//
+//        }
     }
 }
