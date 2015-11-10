@@ -15,9 +15,10 @@ import java.util.Scanner;
  *
  */
 public class Calculator {
-    public static void main(String[] args){
+    public static void main(String[] args) throws PostFixException{
 
-        System.out.println(ExpressionTools.infixToPostFix("1 + 3"));
+        System.out.println(ExpressionTools.postFixEvaluate(ExpressionTools.infixToPostFix("( 5 + 2 ) * ( 3 * 5 )")));
+
 
 //        if(args.length == 0){
 //            System.out.println("Missing name of the input file");
@@ -40,8 +41,11 @@ public class Calculator {
 //                        ExpressionTools.postFixEvaluate(scan.nextLine());
 //                        pw.println("hello");
 //                    }catch(PostFixException e){
-//                        if(e.getMessage().equals("Divide by Zero error"));
-//                        pw.println("UNDEF");
+//                        e.getMessage();
+//                    }catch(ArithmeticException e){
+//                        if(e.getMessage().equals("Divide by Zero error")){
+//                            pw.println("UNDEF");
+//                        }
 //                    }
 //
 //                }
@@ -52,10 +56,6 @@ public class Calculator {
 //                System.exit(1);
 //
 //            }
-//
-//
-//
-//
 //
 //        }
     }

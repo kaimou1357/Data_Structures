@@ -1,5 +1,7 @@
 package Project4;
 
+import java.util.EmptyStackException;
+
 /**
  * Created by Kai on 11/1/2015.
  * Linked List based implementation of a Stack.
@@ -27,7 +29,7 @@ public class MyStack<E> {
      */
     public E peek(){
         if(head == null){
-            return null;
+            throw new EmptyStackException();
         }
         return head.getData();
     }
@@ -38,7 +40,7 @@ public class MyStack<E> {
      */
     public E pop(){
         if(head == null){
-            return null;
+            throw new EmptyStackException();
         }
         E item = head.getData();
         head = head.getNextNode();
@@ -52,7 +54,6 @@ public class MyStack<E> {
      * @return
      */
     public int search(Object o){
-        //TODO To be implemented later.
         if(head == null){
             return -1;
         }
@@ -72,7 +73,7 @@ public class MyStack<E> {
      * Pushes an item on the stakc
      * @param item item
      */
-    public void push(E item){
+    public E push(E item){
         Node<E> n = new Node(item);
         if(head == null){
             head = n;
@@ -81,6 +82,7 @@ public class MyStack<E> {
             n.setNextNode(head);
             head = n;
         }
+        return item;
     }
 
 

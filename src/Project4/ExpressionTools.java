@@ -9,11 +9,13 @@ import java.util.Stack;
  * @date   11/4/2015
  */
 public class ExpressionTools {
-    private ExpressionTools(){}
+    private ExpressionTools() {
+    }
     //Static class so declare ExpressionTools constructor private.
 
     /**
      * This method is taken from Joanna Klukowska's lecture notes.
+     *
      * @param expression
      * @return
      * @throws PostFixException
@@ -61,12 +63,11 @@ public class ExpressionTools {
 
                 // Perform operation.
                 if (operator.equals("/")) {
-                    if (operand2 == 0){
+                    if (operand2 == 0) {
                         throw new ArithmeticException("Divide by Zero");
                     }
                     result = operand1 / operand2;
-                }
-                else if (operator.equals("*"))
+                } else if (operator.equals("*"))
                     result = operand1 * operand2;
                 else if (operator.equals("+"))
                     result = operand1 + operand2;
@@ -100,59 +101,113 @@ public class ExpressionTools {
 
     /**
      * This method converts infix expressions to Postfix operations.
+     *
      * @param message String to be evaluated
      * @return Returns a postfix expression.
      */
 
-    public static String infixToPostFix(String message){
+    public static String infixToPostFix(String message) throws PostFixException {
         MyStack<Character> operatorStack = new MyStack<Character>();
         String postFixResult = "";
         Scanner tokenizer = new Scanner(message);
 
-        while(tokenizer.hasNext()){
-            if(tokenizer.hasNextInt()){
-                postFixResult+=tokenizer.nextInt();
-            }
-            else{
+        while (tokenizer.hasNext()) {
+            if (tokenizer.hasNextInt()) {
+                postFixResult += " " + tokenizer.nextInt();
+            } else {
                 String value = tokenizer.next();
-                String operators  = "*/-+";
+                Operator op = new Operator(value.charAt(0));
+                char c = value.charAt(0);
+                String operators = "*/-+()";
 
-                if(value.equals("(")){
-                    operatorStack.push('(');
-                }
-                else if(operators.contains(value)){
-                    if(!operatorStack.isEmpty()){
-                        //While top element on the stack has precedence higher or equal
-                        postFixResult+=operatorStack.pop();
-
-                    }
-                    operatorStack.push(value.charAt(0));
-                }
-                else if(value.equals(")")){
-                    while(!operatorStack.isEmpty()){
-                        if(!operatorStack.equals("(")){
-                            postFixResult+=operatorStack.pop();
+                if (!isOperator(c)) {
+                    //If the character is not an operator or a left parentheses.
+                    throw new PostFixException("Invalid Operator");
+                } else {
+                    if (c == ')') {
+                        while (!operatorStack.isEmpty() && operatorStack.peek() != '(') {
+                            postFixResult += " " + operatorStack.pop();
                         }
-                        else{
+                        if (!operatorStack.isEmpty()) {
                             operatorStack.pop();
-                            break;
                         }
+                    }
+                    else {
+                        if (!operatorStack.isEmpty() && !isLowerPrecedence(c, operatorStack.peek())) {
+                            operatorStack.push(c);
+                        }
+                        else {
+                            while (!operatorStack.isEmpty() && isLowerPrecedence(c, operatorStack.peek())) {
+                                Character pop = operatorStack.pop();
+                                if (c != '(') {
+                                    postFixResult += " " + pop;
+                                } else {
+                                    c = pop;
+                                }
 
+                            }
+                            operatorStack.push(c);
+                        }
                     }
                 }
 
-
             }
-
-            while(!operatorStack.isEmpty()){
-                postFixResult+=operatorStack.pop();
-            }
-
+        }
+        while (!operatorStack.isEmpty()) {
+            postFixResult += " " + operatorStack.pop();
         }
 
         return postFixResult;
+    }
 
+    /**
+     * Method that returns true if c is an operator.
+     * @param c
+     * @return
+     */
+    private static boolean isOperator(char c)
+    {
+        return c == '+' || c == '-' || c == '*' || c == '/' || c == '^'
+                || c == '(' || c == ')';
+    }
 
+    /**
+     * Determines whether or not the character is actually a number.
+     * @param c
+     * @return true if character is number false, otherwise.
+     */
+    private boolean isNumber(char c){
+        return Character.isDigit(c);
+    }
+
+    /**
+     * A method to determine precedence of operators.
+     * @param c1 Operator 1
+     * @param c2 Operator 2
+     * @return true if c2 is lower precedence than c1.
+     */
+    private static boolean isLowerPrecedence(char c1, char c2)
+    {
+        switch (c1)
+        {
+            case '+':
+            case '-':
+                return !(c2 == '+' || c2 == '-');
+
+            case '*':
+            case '/':
+                return c2 == '^' || c2 == '(';
+
+            case '^':
+                return c2 == '(';
+
+            case '(':
+                return true;
+
+            default:
+                //means that the character must have passed through as something else.
+                return false;
+        }
     }
 
 }
