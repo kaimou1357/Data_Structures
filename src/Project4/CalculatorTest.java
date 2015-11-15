@@ -28,8 +28,8 @@ public class CalculatorTest {
     }
     @Test
     public void testEquationWithParentheses() throws PostFixException{
-        String equation = "( 5 + 2 ) * ( 3 * 5 )";
-        int expected = 105;
+        String equation = "( 4 + 5 ) - 9";
+        int expected = 0;
         int result = ExpressionTools.postFixEvaluate(ExpressionTools.infixToPostFix(equation));
         Assert.assertEquals(expected, result);
     }
@@ -45,9 +45,26 @@ public class CalculatorTest {
     }
     @Test
     public void testMoreThanOneDigit() throws PostFixException{
-        String equation = "12 + 34 - 2";
-        int expected = 44;
+        String equation = "12 + 34 - 2 + 3";
+        int expected = 47;
         int result = ExpressionTools.postFixEvaluate(ExpressionTools.infixToPostFix(equation));
         Assert.assertEquals(expected, result);
+    }
+    @Test (expected = PostFixException.class)
+    public void testOperatorFirst() throws PostFixException{
+        String equation = "- 2 3";
+        ExpressionTools.postFixEvaluate(ExpressionTools.infixToPostFix(equation));
+    }
+
+    @Test (expected = PostFixException.class)
+    public void testOperatorLast() throws PostFixException{
+        String equation = "2 3 -";
+        ExpressionTools.postFixEvaluate(ExpressionTools.infixToPostFix(equation));
+    }
+
+    @Test (expected = PostFixException.class)
+    public void testInvalidOperator() throws PostFixException{
+        String equation = "7 ^ 2";
+        ExpressionTools.postFixEvaluate(ExpressionTools.infixToPostFix(equation));
     }
 }

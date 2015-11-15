@@ -57,7 +57,8 @@ public class MyStack<E> {
         if(head == null){
             return -1;
         }
-        int counter = 0;
+        int counter = 1;
+        //base 1 search function.
         Node<E> current = head;
         while(current.getNextNode()!=null){
             if(current.equals(o)){

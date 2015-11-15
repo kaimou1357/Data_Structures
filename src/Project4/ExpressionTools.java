@@ -109,6 +109,13 @@ public class ExpressionTools {
     public static String infixToPostFix(String message) throws PostFixException {
         MyStack<Character> operatorStack = new MyStack<Character>();
         String postFixResult = "";
+        if(isOperator(message.charAt(0))){
+            //If first character is an operator, throw an exception.
+            throw new PostFixException("Operator first character");
+        }
+        if(isOperator(message.charAt(message.length()-1))){
+            throw new PostFixException("Operator last character");
+        }
         Scanner tokenizer = new Scanner(message);
 
         while (tokenizer.hasNext()) {
@@ -116,59 +123,52 @@ public class ExpressionTools {
                 postFixResult += " " + tokenizer.nextInt();
             } else {
                 String value = tokenizer.next();
-                Operator op = new Operator(value.charAt(0));
                 char c = value.charAt(0);
-                String operators = "*/-+()";
 
-                if (!isOperator(c)) {
+                if (!"*+/-()".contains(value)) {
                     //If the character is not an operator or a left parentheses.
                     throw new PostFixException("Invalid Operator");
                 } else {
-                    if (c == ')') {
-                        while (!operatorStack.isEmpty() && operatorStack.peek() != '(') {
+
+                    if (c == '(') {
+                        operatorStack.push(c);
+                    } else if (isOperator(c)) {
+
+                        while (!operatorStack.isEmpty() && isLowerPrecedence(c, operatorStack.peek())) {
                             postFixResult += " " + operatorStack.pop();
                         }
-                        if (!operatorStack.isEmpty()) {
-                            operatorStack.pop();
-                        }
-                    }
-                    else {
-                        if (!operatorStack.isEmpty() && !isLowerPrecedence(c, operatorStack.peek())) {
-                            operatorStack.push(c);
-                        }
-                        else {
-                            while (!operatorStack.isEmpty() && isLowerPrecedence(c, operatorStack.peek())) {
-                                Character pop = operatorStack.pop();
-                                if (c != '(') {
-                                    postFixResult += " " + pop;
-                                } else {
-                                    c = pop;
-                                }
 
+                        operatorStack.push(c);
+                    } else if (c == ')') {
+                        while (!operatorStack.isEmpty()) {
+                            if (operatorStack.peek() != '(') {
+                                postFixResult += " " + operatorStack.pop();
+                            } else {
+                                operatorStack.pop();
+                                break;
                             }
-                            operatorStack.push(c);
                         }
                     }
                 }
-
             }
         }
+
         while (!operatorStack.isEmpty()) {
             postFixResult += " " + operatorStack.pop();
         }
 
         return postFixResult;
+
     }
 
     /**
      * Method that returns true if c is an operator.
      * @param c
-     * @return
+     * @return true if C is an operator, false if not.
      */
     private static boolean isOperator(char c)
     {
-        return c == '+' || c == '-' || c == '*' || c == '/' || c == '^'
-                || c == '(' || c == ')';
+        return c == '+' || c == '-' || c == '*' || c == '/';
     }
 
     /**
@@ -176,7 +176,7 @@ public class ExpressionTools {
      * @param c
      * @return true if character is number false, otherwise.
      */
-    private boolean isNumber(char c){
+    private static boolean isNumber(char c){
         return Character.isDigit(c);
     }
 
@@ -188,26 +188,33 @@ public class ExpressionTools {
      */
     private static boolean isLowerPrecedence(char c1, char c2)
     {
-        switch (c1)
-        {
-            case '+':
-            case '-':
-                return !(c2 == '+' || c2 == '-');
+        int firstChar = 0;
+        int secondChar = 0;
 
+        switch(c1){
+            case'+':
+            case'-':
+                firstChar = 0;
+                break;
             case '*':
             case '/':
-                return c2 == '^' || c2 == '(';
-
-            case '^':
-                return c2 == '(';
-
+                firstChar = 1;
+                break;
+        }
+        switch(c2){
+            case'+':
+            case'-':
+                secondChar = 0;
+                break;
+            case '*':
+            case '/':
+                secondChar = 1;
+                break;
             case '(':
-                return true;
-
-            default:
-                //means that the character must have passed through as something else.
                 return false;
         }
+
+        return firstChar<=secondChar;
     }
 
 }
